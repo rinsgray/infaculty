@@ -3,7 +3,7 @@
 {%block content%}
 
 <div class="exercise">
-{{left}}{{sign}}{{right}}={{answer}}
+{{left}}{{sign}}{{right}}=?
 </div>
 
 <div class="button">
@@ -11,12 +11,31 @@
 </div>
 
 <div class="answer">
-  <form action="answerURL" method="GET">
-    тут твой ответ:<br>
-      <input type="text" name="youranswer">
-      <button>confirm</button>
-  </form>
+  <input type="text" id="test">
+  <input type="button" id="testbutton" value="Проверить" onclick="z()"><span id="err"></span>
 </div>
-
+<script>
+function z()
+{
+var a=document.getElementById("test");
+var b=document.getElementById("testbutton");
+if (b.value=="Проверить")
+{
+if(a.value=={{answer}})
+{
+document.getElementById('err').innerHTML= ' <font color="green"> &#10004 </font> ';
+}
+else
+{
+document.getElementById('err').innerHTML= '  <font color="red"> &#10008 </font>  ';
+}
+document.getElementById('testbutton').value = 'Далее';
+}
+else
+{
+document.location.reload(true)
+}
+}
+</script>
 
 {%endblock%}

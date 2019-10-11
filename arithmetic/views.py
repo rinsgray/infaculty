@@ -21,6 +21,3 @@ def exercise(request):
 
     #return HttpResponse(str(left)+'*'+str(right))
     return render(request, 'arithmetic/exercise.html',{'left':left,'right':right,'answer':answer,'sign':sign})
-
-def checkanswer(request):
-    pass
