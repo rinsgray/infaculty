@@ -1,0 +1,22 @@
+{%extends 'arithmetic/base.html'%}
+
+{%block content%}
+
+<div class="exercise">
+{{left}}*{{right}}
+</div>
+
+<div class="button">
+
+</div>
+
+<div class="answer">
+  <form action="answerURL" method="GET">
+    тут твой ответ:<br>
+      <input type="text" name="youranswer">
+      <button>confirm</button>
+  </form>
+</div>
+
+
+{%endblock%}
