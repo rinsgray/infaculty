@@ -2,6 +2,10 @@
 
 
 {%block content%}
-<p>Первое правило: писать букву "ё" с точками.
-\[ x = {-b \pm \sqrt{b^2-4ac} \over 2a}. \]</p>
+
+{% for rule in rules%}
+  <p>{{rule_name}}</p>
+{%endfor%}
+
+
 {%endblock%}

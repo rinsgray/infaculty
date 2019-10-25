@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from random import randint, choice
 from django.http import HttpResponse
+from .models import Rule
 # Create your views here.
 
 def index(request):
@@ -26,4 +27,5 @@ def exercise(request):
     return render(request, 'arithmetic/exercise.html',{'left':left,'right':right,'answer':answer,'sign':sign})
 
 def rules(request):
-    return render(request, 'arithmetic/rules.html',{})
+    rules = Rule.objects.all()
+    return render(request, 'arithmetic/rules.html',{'rules':rules})
