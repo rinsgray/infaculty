@@ -4,6 +4,7 @@ from .models import Rule, Student
 # Register your models here.
 class RuleAdmin(admin.ModelAdmin):
     fieldsets = [
+        ('Name', {'fields':['rule_name']}),
         ('Text', {'fields':['rule_text']}),
         ('Image',{'fields':['rule_image']}),
     ]

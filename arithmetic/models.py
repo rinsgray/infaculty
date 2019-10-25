@@ -2,10 +2,15 @@ from django.db import models
 
 # Create your models here.
 class Rule(models.Model):
-    rule_text=models.CharField(max_length=100)
+    def __str__(self):
+        return self.rule_name
+    rule_name=models.CharField(max_length=50)
+    rule_text=models.CharField(max_length=200)
     rule_image=models.ImageField(blank=True)
 
 class Student(models.Model):
+    def __str__(self):
+        return self.student_name
     #Student_Age=models.IntegerField()
     student_name=models.CharField(max_length=50)
     #Lasr_Name=models.CharField(max_length=50)

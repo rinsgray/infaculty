@@ -25,6 +25,13 @@ a{
   color: black;
 }
 
+.foot{
+
+position:relative;
+}
+
 .back{
-  
+  position:absolute;
+  bottom: 0;
+  padding: 20px;
 }
