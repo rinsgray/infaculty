@@ -1,10 +1,14 @@
 {% load static %}
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
   <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="{% static '/css/arithmetic.css' %}">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <title>Проверка арифметики</title>
 </head>
 <body style="background: rgba(255,230,179,1);">
@@ -12,6 +16,10 @@
 
       {%block content%}
       {%endblock%}
+
+<div class="back">
+  <a href="/index/"> <span class="glyphicon glyphicon-thumbs-down red"></span></a>
+</div>
 
   </body>
 </html>

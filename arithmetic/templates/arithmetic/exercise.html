@@ -17,24 +17,26 @@
 <script>
 function z()
 {
+
 var a=document.getElementById("test");
 var b=document.getElementById("testbutton");
-if (b.value=="Проверить")
-{
-if(a.value=={{answer}})
-{
-document.getElementById('err').innerHTML= ' <font color="green"> &#10004 </font> ';
-}
-else
-{
-document.getElementById('err').innerHTML= '  <font color="red"> &#10008 </font>  ';
-}
-document.getElementById('testbutton').value = 'Далее';
-}
-else
-{
-document.location.reload(true)
-}
+
+
+
+  if(a.value=={{answer}})
+  {
+    document.location.reload(true)
+  }
+  else
+  {
+    document.getElementById('err').innerHTML= '  <font color="red"> &#10008 </font>  ';
+  }
+
+
+
+
+
+
 }
 </script>
 
