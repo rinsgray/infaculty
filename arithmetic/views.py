@@ -26,6 +26,10 @@ def exercise(request):
     #return HttpResponse(str(left)+'*'+str(right))
     return render(request, 'arithmetic/exercise.html',{'left':left,'right':right,'answer':answer,'sign':sign})
 
+def rule_detail(request, pk):
+    rule = get_object_or_404(Rule, pk=pk)
+    return render(request, 'arithmetic/rule_detail.html',{'rule':rule})
+
 def rules(request):
     rules = Rule.objects.all()
     return render(request, 'arithmetic/rules.html',{'rules':rules})

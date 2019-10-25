@@ -4,7 +4,7 @@
 {%block content%}
 
 {% for rule in rules%}
-  <p>{{rule_name}}</p>
+  <p><a href="{% url 'rule_detail' pk=rule.pk %}">{{rule_name}}</a></p>
 {%endfor%}
 
 
