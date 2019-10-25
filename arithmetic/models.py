@@ -5,7 +5,7 @@ class Rule(models.Model):
     def __str__(self):
         return self.rule_name
     rule_name=models.CharField(max_length=50)
-    rule_text=models.CharField(max_length=200)
+    rule_text=models.TextField()
     rule_image=models.ImageField(blank=True)
 
 class Student(models.Model):
