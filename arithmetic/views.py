@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from random import randint, choice
 from django.http import HttpResponse
-from .models import Rule
+from .models import Rule, Student
 # Create your views here.
 
 def index(request):
@@ -33,3 +33,11 @@ def rule_detail(request, pk):
 def rules(request):
     rules = Rule.objects.all()
     return render(request, 'arithmetic/rules.html',{'rules':rules})
+
+def student_detail(request, pk):
+    student = get_object_or_404(Student, pk=pk)
+    return render(request, 'arithmetic/student_detail.html',{'student':student})
+
+def students(request):
+    students = Student.objects.all()
+    return render(request, 'arithmetic/students.html',{'students':students})
