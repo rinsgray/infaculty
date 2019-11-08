@@ -2,15 +2,15 @@ from django.contrib import admin
 from .models import Block, Subject, Rule, Student
 
 # Register your models here.
-class BlockInLine(admin.TabularInline):
+class BlockInline(admin.StackedInline):
     model=Block
     extra=1
 
 class RuleAdmin(admin.ModelAdmin):
-    fieldsets = [
+    fieldsets = [('Subject',{'fields':['subject']}),
         ('Name', {'fields':['rule_name']}),
     ]
-    inline = [BlockInLine]
+    inlines = [BlockInline]
 
 class StudentAdmin(admin.ModelAdmin):
     filter_horizontal=('rules_set',)

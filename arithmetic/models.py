@@ -5,12 +5,13 @@ from django.db import models
 class Subject(models.Model):
     def __str__(self):
         return self.subject_name
+
     subject_name = models.CharField(max_length=50)
 
 
 class Rule(models.Model):
     def __str__(self):
-        return self.subject_name
+        return self.rule_name
     rule_name = models.CharField(max_length=50)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
 
