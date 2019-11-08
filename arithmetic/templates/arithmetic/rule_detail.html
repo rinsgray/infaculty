@@ -20,4 +20,5 @@ MathJax.Hub.Config({
 </script>
 {%block content%}
 <p>{{rule.rule_text|linebreaksbr}}</p>
+<img src= "{{MEDIA_URL}}{{rule.rule_image}}" alt="Image" width="60%">
 {%endblock%}

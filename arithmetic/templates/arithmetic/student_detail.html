@@ -2,6 +2,8 @@
 
 {%block content%}
 <h2>{{student.student_name|linebreaksbr}}</h2>
-<h4>{{student.rules_set|linebreaksbr}}</h4>
+{% for rule in student.rules_set.all %}
+<h4>{{rule.rule_name}}</h4>
+{%endfor%}
 
 {%endblock%}
