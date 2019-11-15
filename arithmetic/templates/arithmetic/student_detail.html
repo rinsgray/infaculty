@@ -3,7 +3,7 @@
 {%block content%}
 <h2>{{student.student_name|linebreaksbr}}</h2>
 {% for rule in student.rules_set.all %}
-<h4>{{rule.rule_name}}</h4>
+<h4><a href="{% url 'rule_detail' pk=rule.pk %}">{{rule.rule_name}}</a></h4>
 {%endfor%}
 
 {%endblock%}

@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+from taggit.managers import TaggableManager
 
 # Create your models here.
 
@@ -14,6 +16,7 @@ class Rule(models.Model):
         return self.rule_name
     rule_name = models.CharField(max_length=50)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    tags = TaggableManager()
 
 class Block(models.Model):
     def __str__(self):

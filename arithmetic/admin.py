@@ -9,6 +9,7 @@ class BlockInline(admin.StackedInline):
 class RuleAdmin(admin.ModelAdmin):
     fieldsets = [('Subject',{'fields':['subject']}),
         ('Name', {'fields':['rule_name']}),
+        ('Tags',{'fields':['tags']})
     ]
     inlines = [BlockInline]
 
