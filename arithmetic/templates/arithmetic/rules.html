@@ -3,8 +3,15 @@
 
 {%block content%}
 
+{%for tag in alltags%}
+
+{%endfor%}
+
 {% for rule in rules%}
-  <p><a href="{% url 'rule_detail' pk=rule.pk %}">{{rule.rule_name}}</a></p>
+  <h4><p><a href="{% url 'rule_detail' pk=rule.pk %}">{{rule.rule_name}}</a></p></h4>
+  {%for tag in rule.tags.names%}
+  <small>{{tag}}</small>
+  {%endfor%}
 {%endfor%}
 
 

@@ -8,5 +8,8 @@ urlpatterns=[
     path('rule<int:pk>/', views.rule_detail, name='rule_detail'),
     path('rules/', views.rules, name='rules'),
     path('student<int:pk>/', views.student_detail, name='student_detail'),
-    path('students/', views.students, name='students')
+    path('students/', views.students, name='students'),
+    path('arithmetic/', views.arithmetic, name='arithmetic'),
+    path('equations/', views.equations, name='equations'),
+#    path('filtered/', views.rules_filtered, name='rules_filtered'),
 ]

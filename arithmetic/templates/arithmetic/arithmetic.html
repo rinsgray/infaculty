@@ -1,0 +1,43 @@
+{%extends 'arithmetic/base.html'%}
+
+{%block content%}
+
+<div class="arithmetic">
+{{left}}{{sign}}{{right}}=?
+</div>
+
+<div class="button">
+
+</div>
+
+<div class="answer">
+  <input type="text" id="test">
+  <input type="button" id="testbutton" value="Проверить" onclick="z()"><span id="err"></span>
+</div>
+<script>
+function z()
+{
+
+var a=document.getElementById("test");
+var b=document.getElementById("testbutton");
+
+
+
+  if(a.value=={{answer}})
+  {
+    document.location.reload(true)
+  }
+  else
+  {
+    document.getElementById('err').innerHTML= '  <font color="red"> &#10008 </font>  ';
+  }
+
+
+
+
+
+
+}
+</script>
+
+{%endblock%}

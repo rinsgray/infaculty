@@ -8,6 +8,9 @@ def index(request):
     return render(request, 'arithmetic/index.html',{})
 
 def exercise(request):
+    return render(request, 'arithmetic/exercise.html',{})
+
+def arithmetic(request):
     left=randint(10,40)
     right=randint(2,10)
     sign=choice(['+','*','-','/'])
@@ -24,15 +27,35 @@ def exercise(request):
         answer=left//right
 
     #return HttpResponse(str(left)+'*'+str(right))
-    return render(request, 'arithmetic/exercise.html',{'left':left,'right':right,'answer':answer,'sign':sign})
+    return render(request, 'arithmetic/arithmetic.html',{'left':left,'right':right,'answer':answer,'sign':sign})
+
+def equations(request):
+    return render(request, 'arithmetic/equations.html',{})
 
 def rule_detail(request, pk):
     rule = get_object_or_404(Rule, pk=pk)
     return render(request, 'arithmetic/rule_detail.html',{'rule':rule})
 
-def rules(request):
+def rules(request,pk=None):
     rules = Rule.objects.all()
-    return render(request, 'arithmetic/rules.html',{'rules':rules})
+    if pk:
+        rules = Rule.objects.filter(tags__name__in=[str(pk)])
+    alltags=[]
+    for rule in rules:
+        for tag in rule.tags.all():
+            if tag not in alltags:
+                alltags.append(tag)
+    return render(request, 'arithmetic/rules.html',{'rules':rules,'alltags':alltags})
+'''
+def rules_filtered(request,t):
+    rules = Rule.objects.filter(tags__name__in=[str(t)])
+    alltags=[]
+    for rule in rules:
+        for tag in rule.tags.all():
+            if tag not in alltags:
+                alltags.append(tag)
+    return render(request, 'arithmetic/rules.html',{'rules':rules,'alltags':alltags})
+'''
 
 def student_detail(request, pk):
     student = get_object_or_404(Student, pk=pk)
