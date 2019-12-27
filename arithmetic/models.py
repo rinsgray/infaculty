@@ -34,3 +34,18 @@ class Student(models.Model):
     #Schedule=models.
     #Scores =
     rules_set = models.ManyToManyField(Rule)
+
+class QuestionWithSelection(models.Model):
+    def __str__(self):
+        return self.QWS_name
+    QWS_name = models.CharField(max_length=50)
+    QWS_text = models.CharField(max_length=150)
+
+
+class Selection(models.Model):
+    def __str__(self):
+        return self.selection_text
+    question = models.ForeignKey(QuestionWithSelection, on_delete = models.CASCADE)
+    selection_text=models.CharField(max_length=150)
+    selection_correct = models.BooleanField()
+    #selection_image=models.ImageField(blank=True)

@@ -11,12 +11,12 @@
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <title>Проверка арифметики</title>
 </head>
-<body style="background: rgba(255,230,179,1);">
+<body>
   <body>
 <div id="container">
 
 <div class="top_menu">
-  <a href='/exercise/'>Упражнения</a>
+  <a href='/exercise/' class="equations_button">Упражнения</a>
   <a href='/rules/'>Правила</a>
   <a href="/students/">Учащиеся</a>
 </div>
@@ -29,8 +29,12 @@
 </div>
 <div id="foot">
 
-    <a href="/index/"> <span class="glyphicon glyphicon-thumbs-down red"></span></a>
-
+    <a onclick="goBack()"> <span class="glyphicon glyphicon-thumbs-down red"></span></a>
+<script>
+  function goBack() {
+    window.history.back()
+  }
+</script>
 </div>
 </div>
   </body>

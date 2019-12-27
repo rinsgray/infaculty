@@ -1,14 +1,19 @@
 from django.shortcuts import render, get_object_or_404
 from random import randint, choice
 from django.http import HttpResponse
-from .models import Rule, Student
+from .models import Rule, Student, QuestionWithSelection
 # Create your views here.
 
 def index(request):
     return render(request, 'arithmetic/index.html',{})
 
-def exercise(request):
-    return render(request, 'arithmetic/exercise.html',{})
+def equations(request):
+    try:
+        QWS = QuestionWithSelection.objects.order_by('?').first()
+    except Exception:
+        QWS = None
+
+    return render(request, 'arithmetic/equations.html',{'QWS':QWS})
 
 def arithmetic(request):
     left=randint(10,40)
@@ -29,8 +34,8 @@ def arithmetic(request):
     #return HttpResponse(str(left)+'*'+str(right))
     return render(request, 'arithmetic/arithmetic.html',{'left':left,'right':right,'answer':answer,'sign':sign})
 
-def equations(request):
-    return render(request, 'arithmetic/equations.html',{})
+def exercise(request):
+    return render(request, 'arithmetic/exercise.html',{})
 
 def rule_detail(request, pk):
     rule = get_object_or_404(Rule, pk=pk)
