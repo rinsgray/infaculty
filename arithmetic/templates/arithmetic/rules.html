@@ -6,13 +6,23 @@
 {%for tag in alltags%}
 
 {%endfor%}
+<div class="rule">
 
-{% for rule in rules%}
-  <h4><p><a href="{% url 'rule_detail' pk=rule.pk %}">{{rule.rule_name}}</a></p></h4>
-  {%for tag in rule.tags.names%}
-  <small>{{tag}}</small>
-  {%endfor%}
-{%endfor%}
+  <div class="rule_name">
+    {% for rule in rules%}
+    <p><a href="{% url 'rule_detail' pk=rule.pk %}">{{rule.rule_name}}</a></p>
 
+    <div class="rule_tags">
+      {%for tag in rule.tags.names%}
+      <small>{{tag}}</small>
+      {%endfor%}
+    </div>
+
+
+
+
+    {%endfor%}
+  </div>
+</div>
 
 {%endblock%}

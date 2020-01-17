@@ -8,7 +8,7 @@
 <div class="selection_button">
   <div class="equations_selection">
     {%for selection in QWS.selection_set.all%}
-    <input type="radio" id="{{selection.id}}" name="answer" value="{{selection.selection_correct}}"> <label for="{{selection.id}}">{{selection.selection_text}}</label>
+    <input type="radio" id="{{selection.id}}" name="answer" value="{{selection.selection_correct}}"> <label for="{{selection.id}}">{{selection.selection_text}}</label><br>
     {%endfor%}
   </div>
 

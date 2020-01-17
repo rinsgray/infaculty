@@ -19,11 +19,15 @@ MathJax.Hub.Config({
 });
 </script>
 {%block content%}
-{% for block in rule.block_set.all %}
-{{block.block_text|linebreaksbr}}
-{% if block.block_image %}
-<center><img src= "{{MEDIA_URL}}{{block.block_image}}" alt="Image" width="40%" justify="center"></center>
-{% endif %}
+<div class="rule_detail">
+  {% for block in rule.block_set.all %}
+  {{block.block_text|linebreaksbr}}
+  {% if block.block_image %}
+  <center><img src= "{{MEDIA_URL}}{{block.block_image}}" alt="Image" width="40%" justify="center"></center>
+  {% endif %}
 
-{% endfor %}
+  {% endfor %}
+</div>
+
+
 {%endblock%}

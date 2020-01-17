@@ -1,9 +1,16 @@
 {%extends 'arithmetic/base.html'%}
 
 {%block content%}
-<h2>{{student.student_name|linebreaksbr}}</h2>
-{% for rule in student.rules_set.all %}
-<h4><a href="{% url 'rule_detail' pk=rule.pk %}">{{rule.rule_name}}</a></h4>
-{%endfor%}
+<div class="student_detail">
+
+  <div class="student_detail_name">
+    {{student.student_name|linebreaksbr}}
+  </div>
+
+  {% for rule in student.rules_set.all %}
+  <a href="{% url 'rule_detail' pk=rule.pk %}">{{rule.rule_name}}</a>
+  {%endfor%}
+
+</div>
 
 {%endblock%}
