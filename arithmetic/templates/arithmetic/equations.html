@@ -2,12 +2,12 @@
 
 {%block content%}
 <div class="equations_question">
-  <p>{{QWS.QWS_text}}</p>
+  <p>{{QWStext}}</p>
 </div>
 
 <div class="selection_button">
   <div class="equations_selection">
-    {%for selection in QWS.selection_set.all%}
+    {%for selection in QWSans%}
     <input type="radio" id="{{selection.id}}" name="answer" value="{{selection.selection_correct}}"> <label for="{{selection.id}}">{{selection.selection_text}}</label><br>
     {%endfor%}
   </div>

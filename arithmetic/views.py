@@ -12,8 +12,9 @@ def equations(request):
         QWS = QuestionWithSelection.objects.order_by('?').first()
     except Exception:
         QWS = None
-
-    return render(request, 'arithmetic/equations.html',{'QWS':QWS})
+    QWStext = QWS.QWS_text
+    QWSans  = QWS.selection_set.all().order_by('?')
+    return render(request, 'arithmetic/equations.html',{'QWStext':QWStext,'QWSans':QWSans})
 
 def arithmetic(request):
     left=randint(10,40)
