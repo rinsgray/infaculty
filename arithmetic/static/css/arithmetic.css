@@ -168,34 +168,24 @@ ul {
   margin: 0;
   padding: 0;
 }
-.topmenu > li {
-  display: inline-block;
-  margin-right: 20px;
-  position: relative;
-}
+
 .topmenu > li:last-child {
   margin-right: 0;
 }
 
-.fa {
-  font-family: "FontAwesome";
-  color: inherit;
-  padding-left: 10px;
-}
 .submenu {
   position: absolute;
   top: 100%;
-  left: 0;
-  width: 100%;
-  z-index: 10;
+  width: 144px;
+  text-align: center;
+  font-size: 20px;
   -webkit-transition: 0.5s ease-in-out;
   -moz-transition: 0.5s ease-in-out;
   -o-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
+
 }
-.ul {
-  background: #88abcd;
-}
+
 .submenu {
   -webkit-transform: scaleY(0);
     -ms-transform: scaleY(0);
@@ -203,8 +193,16 @@ ul {
   -webkit-transform-origin: 0 0;
     -ms-transform-origin: 0 0;
     transform-origin: 0 0;
-  background: #FFAB51;
+  background: #88abcd;
 }
+.article{
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.article:hover{
+  background-color: #6492BE;
+}
+
 ul li:hover .submenu {
   -webkit-transform: scaleY(1);
     -ms-transform: scaleY(1);
