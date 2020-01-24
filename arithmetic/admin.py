@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Block, Subject, Rule, Student, QuestionWithSelection, Selection
+from .models import Block, Subject, Rule, Student, QuestionWithSelection, Selection,Year
 
 # Register your models here.
 class BlockInline(admin.StackedInline):
@@ -8,6 +8,7 @@ class BlockInline(admin.StackedInline):
 
 class RuleAdmin(admin.ModelAdmin):
     fieldsets = [('Subject',{'fields':['subject']}),
+        ('Year',{'fields':['year']}),
         ('Name', {'fields':['rule_name']}),
         ('Tags',{'fields':['tags']})
     ]
@@ -25,12 +26,18 @@ class SubjectAdmin(admin.ModelAdmin):
     ('Name', {'fields':['subject_name']}),
     ]
 
+class YearAdmin(admin.ModelAdmin):
+    fieldsets=[
+    ('Number', {'fields':['year_number']}),
+    ]
+
 class SelectionAdmin(admin.StackedInline):
     model = Selection
     extra = 1
 
 class QWSAdmin(admin.ModelAdmin):
-    fieldsets=[
+    fieldsets=[('Subject',{'fields':['QWS_subject']}),
+    ('Year',{'fields':['QWS_year']}),
     ('Name', {'fields':['QWS_name']}),
     ('Text', {'fields':['QWS_text']})
     ]
@@ -39,7 +46,7 @@ class QWSAdmin(admin.ModelAdmin):
 
 
 
-
+admin.site.register(Year, YearAdmin)
 admin.site.register(Rule, RuleAdmin)
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Subject, SubjectAdmin)
