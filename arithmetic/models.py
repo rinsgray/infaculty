@@ -10,12 +10,18 @@ class Subject(models.Model):
 
     subject_name = models.CharField(max_length=50)
 
+class Year(models.Model):
+    def __str__(self):
+        return(str(self.year_number))
+
+    year_number = models.IntegerField()
 
 class Rule(models.Model):
     def __str__(self):
         return self.rule_name
     rule_name = models.CharField(max_length=50)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    year = models.ForeignKey(Year, on_delete=models.CASCADE)
     tags = TaggableManager()
 
 class Block(models.Model):
@@ -40,6 +46,8 @@ class QuestionWithSelection(models.Model):
         return self.QWS_name
     QWS_name = models.CharField(max_length=50)
     QWS_text = models.CharField(max_length=150)
+    QWS_subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    QWS_year = models.ForeignKey(Year, on_delete=models.CASCADE)
 
 
 class Selection(models.Model):
