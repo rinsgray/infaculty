@@ -1,0 +1,37 @@
+{%extends 'arithmetic/base.html'%}
+
+{%block content%}
+<div class="equations_question">
+  <p>{{QWStext}}</p>
+</div>
+
+<form action="index.html" method="post">
+
+
+<div class="selection_button">
+  <div class="equations_selection">
+    {%for selection in QWSans%}
+    <input type="radio" id="{{selection.id}}" name="answer" value="{{selection.selection_correct}}"> <label for="{{selection.id}}">{{selection.selection_text}}</label><br>
+    {%endfor%}
+  </div>
+
+  <div>
+    <button onclick="check()" class="equations_button">Выбрать</button>
+
+    <span id="log"> </span>
+    <script>
+      function check(){
+        if (document.querySelector('input[name=answer]:checked').value=="False")
+        {
+          document.getElementById('log').innerHTML=' <font color="red"> &#10008 </font> ';
+        }
+        else
+        {
+          document.location.reload(true);
+        }
+      }
+    </script>
+  </div>
+</div>
+</form>
+{%endblock%}

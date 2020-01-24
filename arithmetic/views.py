@@ -7,7 +7,7 @@ from .models import Rule, Student, QuestionWithSelection
 def index(request):
     return render(request, 'arithmetic/index.html',{})
 
-def equations(request):
+def formulas(request):
     try:
         QWS = QuestionWithSelection.objects.order_by('?').first()
     except Exception:
@@ -15,6 +15,16 @@ def equations(request):
     QWStext = QWS.QWS_text
     QWSans  = QWS.selection_set.all().order_by('?')
     return render(request, 'arithmetic/equations.html',{'QWStext':QWStext,'QWSans':QWSans})
+
+def formulas_forms(request):
+    try:
+        QWS = QuestionWithSelection.objects.order_by('?').first()
+    except Exception:
+        QWS = None
+    QWStext = QWS.QWS_text
+    QWSans  = QWS.selection_set.all().order_by('?')
+    return render(request, 'arithmetic/formulas.html',{'QWStext':QWStext,'QWSans':QWSans})
+
 
 def arithmetic(request):
     left=randint(10,40)
