@@ -16,16 +16,17 @@
   <body style="background: #faf5d1">
 <div id="container">
 
+
+
 <div class="top_menu">
   <ul class="topmenu">
   <li><a href='/exercise/' class="top_menu_button">Упражнения<i class="fa fa-angle-down"></i></a>
     <ul class="submenu">
+      {% for subject in subjects%}
       <div class="article">
-        <li><a href="">Математика</a></li>
+        <li><a href="{% url 'formulas' pk=subject.pk %}">{{subject.subject_name}}</a></li>
       </div>
-      <div class="article">
-        <li><a href="">Физика</a></li>
-      </div>
+      {%endfor%}
     </ul>
   </li>
   <li><a href='/rules/' class="top_menu_button">Правила</a><li>
@@ -33,12 +34,20 @@
   </ul>
 </div>
 
-<div id="content">
+<div class="header">
+  <div class="progress-container">
+    <div class="progress-bar" id="myBar"></div>
+  </div>
+</div>
 
+<div id="content">
 
       {%block content%}
       {%endblock%}
+
 </div>
+
+
 <div id="foot">
 
     <a onclick="goBack()"> <span class="glyphicon glyphicon-thumbs-down red"></span></a>
@@ -47,6 +56,18 @@
     window.history.back()
   }
 </script>
+
+<script>
+window.onscroll = function() {myFunction()};
+
+function myFunction() {
+var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+var scrolled = (winScroll / height) * 100;
+document.getElementById("myBar").style.width = scrolled + "%";
+}
+</script>
+
 </div>
 </div>
   </body>

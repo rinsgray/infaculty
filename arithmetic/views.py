@@ -1,20 +1,19 @@
 from django.shortcuts import render, get_object_or_404
 from random import randint, choice
 from django.http import HttpResponse
-from .models import Rule, Student, QuestionWithSelection
+from .models import Rule, Student, QuestionWithSelection, Subject
 # Create your views here.
 
 def index(request):
-    return render(request, 'arithmetic/index.html',{})
+    subjects = Subject.objects.all()
+    return render(request, 'arithmetic/index.html',{'subjects':subjects})
 
-def formulas(request):
-    try:
-        QWS = QuestionWithSelection.objects.order_by('?').first()
-    except Exception:
-        QWS = None
+def formulas(request, pk):
+    QWS = QuestionWithSelection.objects.filter(QWS_subject=pk).order_by('?').first()
     QWStext = QWS.QWS_text
     QWSans  = QWS.selection_set.all().order_by('?')
-    return render(request, 'arithmetic/equations.html',{'QWStext':QWStext,'QWSans':QWSans})
+    subjects = Subject.objects.all()
+    return render(request, 'arithmetic/equations.html',{'QWStext':QWStext,'QWSans':QWSans, 'subjects':subjects})
 
 def formulas_forms(request):
     try:
@@ -23,7 +22,8 @@ def formulas_forms(request):
         QWS = None
     QWStext = QWS.QWS_text
     QWSans  = QWS.selection_set.all().order_by('?')
-    return render(request, 'arithmetic/formulas.html',{'QWStext':QWStext,'QWSans':QWSans})
+    subjects = Subject.objects.all()
+    return render(request, 'arithmetic/formulas.html',{'QWStext':QWStext,'QWSans':QWSans, 'subjects':subjects})
 
 
 def arithmetic(request):
@@ -43,14 +43,17 @@ def arithmetic(request):
         answer=left//right
 
     #return HttpResponse(str(left)+'*'+str(right))
-    return render(request, 'arithmetic/arithmetic.html',{'left':left,'right':right,'answer':answer,'sign':sign})
+    subjects = Subject.objects.all()
+    return render(request, 'arithmetic/arithmetic.html',{'left':left,'right':right,'answer':answer,'sign':sign, 'subjects':subjects})
 
 def exercise(request):
-    return render(request, 'arithmetic/exercise.html',{})
+    subjects = Subject.objects.all()
+    return render(request, 'arithmetic/exercise.html',{'subjects':subjects})
 
 def rule_detail(request, pk):
     rule = get_object_or_404(Rule, pk=pk)
-    return render(request, 'arithmetic/rule_detail.html',{'rule':rule})
+    subjects = Subject.objects.all()
+    return render(request, 'arithmetic/rule_detail.html',{'rule':rule, 'subjects':subjects})
 
 def rules(request,pk=None):
     rules = Rule.objects.all()
@@ -61,7 +64,8 @@ def rules(request,pk=None):
         for tag in rule.tags.all():
             if tag not in alltags:
                 alltags.append(tag)
-    return render(request, 'arithmetic/rules.html',{'rules':rules,'alltags':alltags})
+    subjects = Subject.objects.all()
+    return render(request, 'arithmetic/rules.html',{'rules':rules,'alltags':alltags, 'subjects':subjects})
 '''
 def rules_filtered(request,t):
     rules = Rule.objects.filter(tags__name__in=[str(t)])
@@ -75,8 +79,10 @@ def rules_filtered(request,t):
 
 def student_detail(request, pk):
     student = get_object_or_404(Student, pk=pk)
-    return render(request, 'arithmetic/student_detail.html',{'student':student})
+    subjects = Subject.objects.all()
+    return render(request, 'arithmetic/student_detail.html',{'student':student, 'subjects':subjects})
 
 def students(request):
     students = Student.objects.all()
-    return render(request, 'arithmetic/students.html',{'students':students})
+    subjects = Subject.objects.all()
+    return render(request, 'arithmetic/students.html',{'students':students, 'subjects':subjects})
