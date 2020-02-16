@@ -17,18 +17,21 @@
 
     <span id="log"> </span>
     <script>
+      var jright = {{pre_right}};
+      var jtotal = {{pre_total}}+1;
       function check(){
         if (document.querySelector('input[name=answer]:checked').value=="False")
         {
           document.getElementById('log').innerHTML=' <font color="red"> &#10008 </font> ';
+          document.location.href = "{% url 'formulas' pk=subject pre_right=pre_right pre_total=pre_total|add:"1"%}";
         }
         else
         {
-          document.location.reload(true);
+          document.location.href = "{% url 'formulas' pk=subject pre_right=pre_right|add:"1" pre_total=pre_total|add:"1"%}";
         }
       }
     </script>
   </div>
 </div>
-
+<p>Всего верных {{pre_right}} из {{pre_total}}</p>
 {%endblock%}

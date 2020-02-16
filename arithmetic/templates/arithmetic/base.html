@@ -24,7 +24,7 @@
     <ul class="submenu">
       {% for subject in subjects%}
       <div class="article">
-        <li><a href="{% url 'formulas' pk=subject.pk %}">{{subject.subject_name}}</a></li>
+        <li><a href="{% url 'formulas' pk=subject.pk pre_right=0 pre_total=0%}">{{subject.subject_name}}</a></li>
       </div>
       {%endfor%}
     </ul>
