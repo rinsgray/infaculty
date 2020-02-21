@@ -27,11 +27,27 @@
         }
         else
         {
-          document.location.href = "{% url 'formulas' pk=subject pre_right=pre_right|add:"1" pre_total=pre_total|add:"1"%}";
+          document.location.href = "{% url 'formulas' pk=subject pre_right=pre_right|add:"1" pre_total=pre_total%}";
         }
       }
     </script>
   </div>
 </div>
-<p>Всего верных {{pre_right}} из {{pre_total}}</p>
+<p>Всего верных {{pre_right}} из {{pre_total|add:pre_right}}</p>
+{%with ''|center:pre_right as range%}
+{% for cross in range%}
+
+<span style="color:#00aa00">&#10004</span>
+
+{%endfor%}
+{%endwith%}
+
+{%with ''|center:pre_total as range%}
+{% for cross in range%}
+
+<span style="color:#dd0000">&#10008</span>
+
+{%endfor%}
+{%endwith%}
+
 {%endblock%}
