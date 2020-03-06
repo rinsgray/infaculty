@@ -10,7 +10,7 @@ urlpatterns=[
     path('student<int:pk>/', views.student_detail, name='student_detail'),
     path('students/', views.students, name='students'),
     path('arithmetic/', views.arithmetic, name='arithmetic'),
-    path('formulas/<int:pk>/r=<int:pre_right>t=<int:pre_total>', views.formulas, name='formulas'),
+    path('formulas/<int:pk>/r=<int:pre_right>/t=<int:pre_total>/g=<int:grade>', views.formulas, name='formulas'),
     path('test/',views.formulas_forms,name='formulas_forms')
 #    path('filtered/', views.rules_filtered, name='rules_filtered'),
 ]

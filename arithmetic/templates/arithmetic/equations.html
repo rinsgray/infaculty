@@ -1,6 +1,46 @@
 {%extends 'arithmetic/base.html'%}
 
 {%block content%}
+
+<script>
+window.onload = function class_select(){
+  if ({{grade}}==5){
+    document.getElementById("vkl1").checked=true;
+  }
+  if ({{grade}}==6){
+    document.getElementById("vkl2").checked=true;
+  }
+  if ({{grade}}==7){
+    document.getElementById("vkl3").checked=true;
+  }
+  if ({{grade}}==8){
+    document.getElementById("vkl4").checked=true;
+  }
+  if ({{grade}}==9){
+    document.getElementById("vkl5").checked=true;
+  }
+  if ({{grade}}==10){
+    document.getElementById("vkl6").checked=true;
+  }
+  if ({{grade}}==11){
+    document.getElementById("vkl7").checked=true;
+  }
+}
+
+</script>
+
+<div class="korpus">
+
+  <input type="radio" name="odin" id="vkl1" onclick="window.location.href='{% url 'formulas' pk=subject pre_right=pre_right pre_total=pre_total grade=5%}'" /><label for="vkl1">5</label>
+  <input type="radio" name="odin" id="vkl2" onclick="window.location.href='{% url 'formulas' pk=subject pre_right=pre_right pre_total=pre_total grade=6%}'" /><label for="vkl2">6</label>
+  <input type="radio" name="odin" id="vkl3" onclick="window.location.href='{% url 'formulas' pk=subject pre_right=pre_right pre_total=pre_total grade=7%}'" /><label for="vkl3">7</label>
+  <input type="radio" name="odin" id="vkl4" onclick="window.location.href='{% url 'formulas' pk=subject pre_right=pre_right pre_total=pre_total grade=8%}'" /><label for="vkl4">8</label>
+  <input type="radio" name="odin" id="vkl5" onclick="window.location.href='{% url 'formulas' pk=subject pre_right=pre_right pre_total=pre_total grade=9%}'" /><label for="vkl5">9</label>
+  <input type="radio" name="odin" id="vkl6" onclick="window.location.href='{% url 'formulas' pk=subject pre_right=pre_right pre_total=pre_total grade=10%}'" /><label for="vkl6">10</label>
+  <input type="radio" name="odin" id="vkl7" onclick="window.location.href='{% url 'formulas' pk=subject pre_right=pre_right pre_total=pre_total grade=11%}'" /><label for="vkl7">11</label>
+
+</div>
+
 <div class="equations_question">
   <p>{{QWStext}}</p>
 </div>
@@ -23,31 +63,40 @@
         if (document.querySelector('input[name=answer]:checked').value=="False")
         {
           document.getElementById('log').innerHTML=' <font color="red"> &#10008 </font> ';
-          document.location.href = "{% url 'formulas' pk=subject pre_right=pre_right pre_total=pre_total|add:"1"%}";
+          document.location.href = "{% url 'formulas' pk=subject pre_right=pre_right pre_total=pre_total|add:"1" grade=grade%}";
         }
         else
         {
-          document.location.href = "{% url 'formulas' pk=subject pre_right=pre_right|add:"1" pre_total=pre_total%}";
+          document.location.href = "{% url 'formulas' pk=subject pre_right=pre_right|add:"1" pre_total=pre_total grade=grade%}";
         }
       }
     </script>
   </div>
 </div>
+
+<div class="checkmark_cross">
 <p>Всего верных {{pre_right}} из {{pre_total|add:pre_right}}</p>
-{%with ''|center:pre_right as range%}
-{% for cross in range%}
 
-<span style="color:#00aa00">&#10004</span>
+  {%with ''|center:pre_right as range%}
+  <div class="checkmark">
+  {% for cross in range%}
 
-{%endfor%}
-{%endwith%}
+  <span style="color:#00aa00">&#10004</span>
 
-{%with ''|center:pre_total as range%}
-{% for cross in range%}
+  {%endfor%}
+  </div>
+  {%endwith%}
 
-<span style="color:#dd0000">&#10008</span>
 
-{%endfor%}
-{%endwith%}
+<div class="cross">
+  {%with ''|center:pre_total as range%}
+  {% for cross in range%}
+
+  <span style="color:#dd0000">&#10008</span>
+
+  {%endfor%}
+  {%endwith%}
+</div>
+</div>
 
 {%endblock%}

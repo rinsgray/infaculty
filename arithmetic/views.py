@@ -8,12 +8,16 @@ def index(request):
     subjects = Subject.objects.all()
     return render(request, 'arithmetic/index.html',{'subjects':subjects})
 
-def formulas(request, pk, pre_right = 0, pre_total = 0):
-    QWS = QuestionWithSelection.objects.filter(QWS_subject=pk).order_by('?').first()
-    QWStext = QWS.QWS_text
-    QWSans  = QWS.selection_set.all().order_by('?')
+def formulas(request, pk, pre_right = 0, pre_total = 0, grade = 11):
+    QWS = QuestionWithSelection.objects.filter(QWS_subject=pk, QWS_year__year_number__lte=grade).order_by('?').first()
+    if QWS:
+        QWStext = QWS.QWS_text
+        QWSans  = QWS.selection_set.all().order_by('?')
+    else:
+        QWStext = 'Нет вопросов по таким критериям'
+        QWSans = None
     subjects = Subject.objects.all()
-    return render(request, 'arithmetic/equations.html',{'QWStext':QWStext,'QWSans':QWSans, 'subjects':subjects,'pre_right':pre_right,'pre_total':pre_total,'subject':pk})
+    return render(request, 'arithmetic/equations.html',{'QWStext':QWStext,'QWSans':QWSans, 'subjects':subjects,'pre_right':pre_right,'pre_total':pre_total,'subject':pk,'grade':grade})
 
 
 def formulas_forms(request):
