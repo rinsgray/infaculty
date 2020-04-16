@@ -32,7 +32,7 @@ a:hover{
   word-spacing: 20px;
   padding-left: 100px;
   font-size: 30px;
-  font-family: 'Amatic SC', cursive;
+  font-family: 'Poiret One', cursive;
   position: fixed;
   top:0;
   width:100%;
@@ -47,7 +47,8 @@ html, body {
 }
 
 body{
-  font-family: 'Amatic SC', cursive;
+  font-family: 'Poiret One', cursive;
+  font-weight: bold;
 }
 
 .exercise{
